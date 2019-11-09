@@ -1,0 +1,31 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: password
+  host: localhost
+
+development:
+  <<: *default
+  database: citepost_development
+
+test:
+  <<: *default
+  database: citepost_test
+
+# On Heroku and other platform providers, you may have a full connection URL
+# available as an environment variable. For example:
+#
+#   DATABASE_URL="postgres://myuser:mypass@localhost/somedatabase"
+#
+# You can use this database configuration with:
+#
+#   production:
+#     url: <%= ENV['DATABASE_URL'] %>
+#
+production:
+  <<: *default
+  database: citepost_production
+#  username: citepost
+#  password: <%= ENV['CITEPOST_DATABASE_PASSWORD'] %>
